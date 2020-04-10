@@ -64,8 +64,8 @@ class BarrelsBlockHandler implements SlimefunBlockHandler {
             b.getWorld().dropItem(b.getLocation(), SlimefunItem.getByID("BARREL_BIO_PROTECTION").getItem());
 
         if (BlockStorage.getLocationInfo(b.getLocation(), "storedItems") == null) return true;
-        //There's no need to box the integer.
-        int storedAmount = Integer.parseInt(BlockStorage.getLocationInfo(b.getLocation(), "storedItems"));
+        //There's no need to box the long.
+        long storedAmount = Long.parseLong(BlockStorage.getLocationInfo(b.getLocation(), "storedItems"));
 
         ItemStack item = inv.getItemInSlot(22);
         ItemMeta meta = item.getItemMeta();
@@ -92,7 +92,7 @@ class BarrelsBlockHandler implements SlimefunBlockHandler {
                 storedAmount -= amount;
             } 
             else {
-                amount = storedAmount;
+                amount = (int) storedAmount;
                 storedAmount = 0;
             }
 

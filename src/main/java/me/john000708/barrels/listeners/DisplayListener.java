@@ -21,7 +21,7 @@ public class DisplayListener implements Listener {
     }
 
     @EventHandler
-    public void onPickpup(EntityPickupItemEvent e) {
+    public void onPickup(EntityPickupItemEvent e) {
         if (!e.getItem().hasMetadata("no_pickup") && e.getItem().getItemStack().hasItemMeta() && e.getItem().getItemStack().getItemMeta().hasDisplayName() && e.getItem().getItemStack().getItemMeta().getDisplayName().startsWith(name)) {
         	e.setCancelled(true);
         	e.getItem().remove();

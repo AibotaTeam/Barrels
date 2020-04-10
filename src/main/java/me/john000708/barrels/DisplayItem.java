@@ -22,7 +22,7 @@ public class DisplayItem {
 
     private static final String ITEM_DATA = ChatColor.translateAlternateColorCodes('&', "&6&lB4R3L - &eITEM");
 
-    public static void updateDisplayItem(Block b, int capacity, boolean allow) {
+    public static void updateDisplayItem(Block b, long capacity, boolean allow) {
         if (!allow) {
             removeDisplayItem(b);
             return;
@@ -34,7 +34,7 @@ public class DisplayItem {
     	BlockMenu menu = BlockStorage.getInventory(b);
 
     	if (BlockStorage.getLocationInfo(b.getLocation(), "storedItems") != null) {
-            int storedItems = Integer.valueOf(BlockStorage.getLocationInfo(b.getLocation(), "storedItems"));
+            long storedItems = Long.parseLong(BlockStorage.getLocationInfo(b.getLocation(), "storedItems"));
             stack = menu.getItemInSlot(22).clone();
             nametag = ChatColor.translateAlternateColorCodes('&', Barrels.getItemFormat());
             nametag = nametag.replace("<storedAmount>", String.valueOf(storedItems));

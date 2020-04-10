@@ -41,10 +41,10 @@ public abstract class Barrel extends SimpleSlimefunItem<BlockTicker> {
     private static final int[] border2 = { 3, 5, 12, 13, 14, 21, 23 };
     private static final int[] border3 = { 6, 7, 8, 15, 17, 24, 25, 26 };
 
-    private int capacity;
+    private long capacity;
     private boolean allowDisplayItem;
 
-    protected Barrel(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe, int capacity) {
+    protected Barrel(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe, long capacity) {
         super(category, item, recipeType, recipe);
 
         this.capacity = capacity;
@@ -124,13 +124,13 @@ public abstract class Barrel extends SimpleSlimefunItem<BlockTicker> {
         };
     }
 
-    public int getCapacity(Block b) {
+    public long getCapacity(Block b) {
         if (BlockStorage.getLocationInfo(b.getLocation(), "capacity") == null) {
             BlockStorage.addBlockInfo(b, "capacity", String.valueOf(this.capacity));
         }
 
-        //There's no need to box the integer.
-        return Integer.parseInt(BlockStorage.getLocationInfo(b.getLocation(), "capacity"));
+        //There's no need to box the long.
+        return Long.parseLong(BlockStorage.getLocationInfo(b.getLocation(), "capacity"));
     }
 
     public int[] getInputSlots() {
@@ -144,8 +144,8 @@ public abstract class Barrel extends SimpleSlimefunItem<BlockTicker> {
     private ItemStack getCapacityItem(Block b) {
         StringBuilder bar = new StringBuilder();
 
-        //There's no need to box the integer.
-        int storedItems = Integer.parseInt(BlockStorage.getLocationInfo(b.getLocation(), "storedItems"));
+        //There's no need to box the long.
+        long storedItems = Long.parseLong(BlockStorage.getLocationInfo(b.getLocation(), "storedItems"));
         float percentage = Math.round((float) storedItems / (float) getCapacity(b) * 100.0F);
 
         bar.append("&8[");
@@ -196,13 +196,13 @@ public abstract class Barrel extends SimpleSlimefunItem<BlockTicker> {
                     if (BlockStorage.getLocationInfo(b.getLocation(), "storedItems") == null) {
                         BlockStorage.addBlockInfo(b, "storedItems", "1");
                     }
-                    //There's no need to box the integer.
-                    int storedAmount = Integer.parseInt(BlockStorage.getLocationInfo(b.getLocation(), "storedItems"));
+                    //There's no need to box the long.
+                    long storedAmount = Long.parseLong(BlockStorage.getLocationInfo(b.getLocation(), "storedItems"));
 
                     if (storedAmount < getCapacity(b)) {
                         if (storedAmount + input.getAmount() > getCapacity(b)) {
                             BlockStorage.addBlockInfo(b, "storedItems", String.valueOf(getCapacity(b)));
-                            inventory.replaceExistingItem(slot, InvUtils.decreaseItem(inventory.getItemInSlot(slot), getCapacity(b) - storedAmount), false);
+                            inventory.replaceExistingItem(slot, InvUtils.decreaseItem(inventory.getItemInSlot(slot), (int) (getCapacity(b) - storedAmount)), false);
                         } else {
                             BlockStorage.addBlockInfo(b, "storedItems", String.valueOf(storedAmount + input.getAmount()));
                             inventory.replaceExistingItem(slot, new ItemStack(Material.AIR), false);
@@ -227,8 +227,8 @@ public abstract class Barrel extends SimpleSlimefunItem<BlockTicker> {
 
         if (BlockStorage.getLocationInfo(b.getLocation(), "storedItems") == null) return;
 
-        //There's no need to box the integer.
-        int stored = Integer.parseInt(BlockStorage.getLocationInfo(b.getLocation(), "storedItems"));
+        //There's no need to box the long.
+        long stored = Long.parseLong(BlockStorage.getLocationInfo(b.getLocation(), "storedItems"));
         ItemStack output = inventory.getItemInSlot(22).clone();
 
         if (inventory.getItemInSlot(getOutputSlots()[0]) != null) {
@@ -238,9 +238,9 @@ public abstract class Barrel extends SimpleSlimefunItem<BlockTicker> {
 
             int requested = output.getMaxStackSize() - inventory.getItemInSlot(getOutputSlots()[0]).getAmount();
 
-            output.setAmount(Math.min(stored, requested));
+            output.setAmount((int) Math.min(stored, requested));
         } else {
-            output.setAmount(Math.min(stored, output.getMaxStackSize()));
+            output.setAmount((int) Math.min(stored, output.getMaxStackSize()));
         }
 
         ItemMeta meta = output.getItemMeta();
