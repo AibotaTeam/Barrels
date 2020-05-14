@@ -20,7 +20,7 @@ import java.util.Optional;
  */
 public class DisplayItem {
 
-    private static final String ITEM_DATA = ChatColor.translateAlternateColorCodes('&', "&6&lB4R3L - &eITEM");
+    private static final String ITEM_DATA = ChatColor.translateAlternateColorCodes('&', "&6&lB4R3L - &e物品");
 
     public static void updateDisplayItem(Block b, int capacity, boolean allow) {
         if (!allow) {
@@ -29,7 +29,7 @@ public class DisplayItem {
         }
 
         ItemStack stack = new ItemStack(Material.BARRIER, 1);
-        String nametag = ChatColor.translateAlternateColorCodes('&', "&cEmpty");
+        String nametag = ChatColor.translateAlternateColorCodes('&', "&c空");
 
     	BlockMenu menu = BlockStorage.getInventory(b);
 

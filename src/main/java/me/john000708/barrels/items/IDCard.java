@@ -40,10 +40,10 @@ public class IDCard extends SimpleSlimefunItem<ItemUseHandler> {
 
 	            if (lore.get(0).equals("")) {
 	                lore.set(0, ChatColor.translateAlternateColorCodes('&', "&0" + p.getUniqueId().toString()));
-	                lore.set(1, ChatColor.translateAlternateColorCodes('&', "&fBound to: " + p.getName()));
+	                lore.set(1, ChatColor.translateAlternateColorCodes('&', "&f绑定到: " + p.getName()));
 	                meta.setLore(lore);
 	                item.setItemMeta(meta);
-	                p.sendMessage(ChatColor.GREEN + "ID Card bound.");
+	                p.sendMessage(ChatColor.GREEN + "身份证已绑定.");
 	            } 
 	            else if (e.getSlimefunBlock().isPresent()) {
 	            	SlimefunItem barrel = e.getSlimefunBlock().get();
@@ -54,10 +54,10 @@ public class IDCard extends SimpleSlimefunItem<ItemUseHandler> {
 		                    BlockStorage.addBlockInfo(clickedBlock, "whitelist", whitelistedPlayers + ChatColor.stripColor(lore.get(0)) + ";");
 		                    
 		                    ItemUtils.consumeItem(item, false);
-		                    p.sendMessage(ChatColor.GREEN + "Player successfully whitelisted!");
+		                    p.sendMessage(ChatColor.GREEN + "玩家已成功加入白名单!");
 		                } 
 		                else {
-		                    p.sendMessage(ChatColor.RED + "The player is already whitelisted.");
+		                    p.sendMessage(ChatColor.RED + "玩家已经在白名单内了.");
 		                }
 		            }
 	            }

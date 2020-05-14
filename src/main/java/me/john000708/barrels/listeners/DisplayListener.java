@@ -14,7 +14,7 @@ import me.john000708.barrels.Barrels;
  */
 public class DisplayListener implements Listener {
 	
-	private final String name = ChatColor.translateAlternateColorCodes('&', "&6&lB4R3L - &eITEM");
+	private final String name = ChatColor.translateAlternateColorCodes('&', "&6&lB4R3L - &e物品");
 	
     public DisplayListener(Barrels plugin) {
         Bukkit.getPluginManager().registerEvents(this, plugin);

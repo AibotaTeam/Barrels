@@ -72,28 +72,28 @@ public class Barrels extends JavaPlugin implements SlimefunAddon {
     }
     
     private void setup() {
-        Category barrelCat = new Category(new NamespacedKey(this, "barrels"), new CustomItem(Material.OAK_LOG, "&aBarrels", "", "&a> Click to open"), 2);
+        Category barrelCat = new Category(new NamespacedKey(this, "barrels"), new CustomItem(Material.OAK_LOG, "&a桶", "", "&a> 点击打开"), 2);
 
-        SlimefunItemStack smallBarrel = new SlimefunItemStack("BARREL_SMALL", Material.OAK_LOG, "&9Barrel &7- &eSmall", "", "&8\u21E8 &7Capacity: 64 Stacks");
-        SlimefunItemStack mediumBarrel = new SlimefunItemStack("BARREL_MEDIUM", Material.SPRUCE_LOG, "&9Barrel &7- &eMedium", "", "&8\u21E8 &7Capacity: 128 Stacks");
-        SlimefunItemStack bigBarrel = new SlimefunItemStack("BARREL_BIG", Material.DARK_OAK_LOG, "&9Barrel &7- &eBig", "", "&8\u21E8 &7Capacity: 256 Stacks");
-        SlimefunItemStack largeBarrel = new SlimefunItemStack("BARREL_LARGE", Material.ACACIA_LOG, "&9Barrel &7- &eLarge", "", "&8\u21E8 &7Capacity: 512 Stacks");
-        SlimefunItemStack deepStorageUnit = new SlimefunItemStack("BARREL_GIGANTIC", Material.DIAMOND_BLOCK, "&3Deep Storage Unit", "", "&4End-Game Storage Solution", "", "&8\u21E8 &7Capacity: 1048576 Stacks");
+        SlimefunItemStack smallBarrel = new SlimefunItemStack("BARREL_SMALL", Material.OAK_LOG, "&9桶 &7- &e小", "", "&8\u21E8 &7容量: 64 组");
+        SlimefunItemStack mediumBarrel = new SlimefunItemStack("BARREL_MEDIUM", Material.SPRUCE_LOG, "&9桶 &7- &e中", "", "&8\u21E8 &7容量: 128 组");
+        SlimefunItemStack bigBarrel = new SlimefunItemStack("BARREL_BIG", Material.DARK_OAK_LOG, "&9桶 &7- &e大", "", "&8\u21E8 &7容量: 256 组");
+        SlimefunItemStack largeBarrel = new SlimefunItemStack("BARREL_LARGE", Material.ACACIA_LOG, "&9桶 &7- &e超大", "", "&8\u21E8 &7容量: 512 组");
+        SlimefunItemStack deepStorageUnit = new SlimefunItemStack("BARREL_GIGANTIC", Material.DIAMOND_BLOCK, "&3深度存储单元", "", "&4终极存储解决方案", "", "&8\u21E8 &7容量: 1048576 组");
 
         //Upgrades
-        SlimefunItemStack explosionModule = new SlimefunItemStack("BARREL_EXPLOSION_MODULE", Material.ITEM_FRAME, "&9Explosion Protection", "", "&fPrevents the barrel from", "&fgetting destroyed.");
-        SlimefunItemStack biometricProtectionModule = new SlimefunItemStack("BARREL_BIO_PROTECTION", Material.ITEM_FRAME, "&9Biometric Protection", "", "&fPrevents other people", "&ffrom accessing your barrel.");
-        SlimefunItemStack idCard = new SlimefunItemStack("BARREL_ID_CARD", Material.PAPER, "&fID Card", "", "&fRight click to bind.");
-        SlimefunItemStack structUpgrade1 = new SlimefunItemStack("STRUCT_UPGRADE_1", Material.ITEM_FRAME, "&9Structural Upgrade &7- &eI", "&bSmall &8\u21E8 &bMedium");
-        SlimefunItemStack structUpgrade2 = new SlimefunItemStack("STRUCT_UPGRADE_2", Material.ITEM_FRAME, "&9Structural Upgrade &7- &eII", "&bMedium &8\u21E8 &bBig");
-        SlimefunItemStack structUpgrade3 = new SlimefunItemStack("STRUCT_UPGRADE_3", Material.ITEM_FRAME, "&9Structural Upgrade &7- &eIII", "&bBig &8\u21E8 &bLarge");
+        SlimefunItemStack explosionModule = new SlimefunItemStack("BARREL_EXPLOSION_MODULE", Material.ITEM_FRAME, "&9爆炸保护", "", "&f阻止桶被破坏");
+        SlimefunItemStack biometricProtectionModule = new SlimefunItemStack("BARREL_BIO_PROTECTION", Material.ITEM_FRAME, "&9生物保护", "", "&f阻止其他人打开你的桶.");
+        SlimefunItemStack idCard = new SlimefunItemStack("BARREL_ID_CARD", Material.PAPER, "&f身份证", "", "&f右键绑定身份.");
+        SlimefunItemStack structUpgrade1 = new SlimefunItemStack("STRUCT_UPGRADE_1", Material.ITEM_FRAME, "&9结构升级 &7- &eI", "&b小 &8\u21E8 &b中");
+        SlimefunItemStack structUpgrade2 = new SlimefunItemStack("STRUCT_UPGRADE_2", Material.ITEM_FRAME, "&9结构升级 &7- &eII", "&b中 &8\u21E8 &b大");
+        SlimefunItemStack structUpgrade3 = new SlimefunItemStack("STRUCT_UPGRADE_3", Material.ITEM_FRAME, "&9结构升级 &7- &eIII", "&b大 &8\u21E8 &b超大");
 
         new Barrel(barrelCat, smallBarrel, RecipeType.ENHANCED_CRAFTING_TABLE, 
         new ItemStack[] {new ItemStack(Material.OAK_SLAB), requirePlastic ? SlimefunItems.PLASTIC_SHEET : new ItemStack(Material.CAULDRON), new ItemStack(Material.OAK_SLAB), new ItemStack(Material.OAK_SLAB), new ItemStack(Material.CHEST), new ItemStack(Material.OAK_SLAB), new ItemStack(Material.OAK_SLAB), SlimefunItems.GILDED_IRON, new ItemStack(Material.OAK_SLAB)}, 4096) {
 
             @Override
             public String getInventoryTitle() {
-                return "&9Barrel &7- &eSmall";
+                return "&9桶 &7- &e小";
             }
 
         }.register(this);
@@ -103,7 +103,7 @@ public class Barrels extends JavaPlugin implements SlimefunAddon {
 
             @Override
             public String getInventoryTitle() {
-                return "&9Barrel &7- &eMedium";
+                return "&9桶 &7- &e中";
             }
 
         }.register(this);
@@ -113,7 +113,7 @@ public class Barrels extends JavaPlugin implements SlimefunAddon {
 
             @Override
             public String getInventoryTitle() {
-                return "&9Barrel &7- &eBig";
+                return "&9桶 &7- &e大";
             }
 
         }.register(this);
@@ -123,7 +123,7 @@ public class Barrels extends JavaPlugin implements SlimefunAddon {
 
             @Override
             public String getInventoryTitle() {
-                return "&9Barrel &7- &eLarge";
+                return "&9桶 &7- &e超大";
             }
 
         }.register(this);
@@ -133,7 +133,7 @@ public class Barrels extends JavaPlugin implements SlimefunAddon {
 
             @Override
             public String getInventoryTitle() {
-                return "&3Deep Storage Unit";
+                return "&3深度存储单元";
             }
 
         }.register(this);

@@ -31,7 +31,7 @@ public abstract class BarrelModule extends SimpleSlimefunItem<ItemUseHandler> {
 	                if (applyUpgrade(e.getClickedBlock().get())) return;
 	                
 	                ItemUtils.consumeItem(e.getItem(), false);
-	                e.getPlayer().sendMessage(ChatColor.GREEN + "Module successfully applied!");
+	                e.getPlayer().sendMessage(ChatColor.GREEN + "模块已成功应用!");
 	            }
 			}
 		};
